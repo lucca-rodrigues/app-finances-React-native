@@ -5,8 +5,6 @@ import { StatusBar } from 'react-native';
 
 import Routes from './routes/index';
 
-console.disableYellowBox = true;
-
 export default function App() {
   return (
     <NavigationContainer>
