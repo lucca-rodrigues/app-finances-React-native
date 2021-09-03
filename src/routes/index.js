@@ -1,11 +1,12 @@
 import React from 'react';
+// import {View, ActivityIndicator} from 'react-native';
 
-import AppRoutes from './app.routes';
-import AuthRoutes from './auth.routes';
-import { View, ActivityIndicator } from 'react-native';
+// import AppRouter from './router';
+import Home from './pages/Home';
+// import AuthRoutes from './auth.routes';
 
 function Routes() {
-    return <AppRoutes />;
+  return <Home />;
 }
 
 export default Routes;
