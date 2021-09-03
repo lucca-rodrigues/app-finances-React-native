@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Platform, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
 import {View, Text} from 'react-native';
@@ -6,13 +7,11 @@ import LogoImage from '../../assets/Logo.png';
 
 import { Background, Container, Logo, AreaInput, Input, SubmitBtn, SubmitText, Link, LinkText } from './styles';
 
-function Home(){
+function SignIn(){
   const navigation = useNavigation();
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
-
-  // const { signIn, loadingAuth } = useContext(AuthContext);
 
   function handleLogin() {
     // signIn(email, password);
@@ -20,15 +19,15 @@ function Home(){
 
   return (
     <Background>
-            <Container>
+            <Container behavior={Platform.OS === 'ios' ? 'padding' : '' } enabled>
                 <Logo source={require('../../assets/Logo.png')} />
                 <AreaInput>
                     <Input
                         placeholder='E-mail'
                         autoCorrect={false}
                         autoCapitalize='none'
-                        // value={email}
-                        // onChangeText={text => setEmail(text)}
+                        value={email}
+                        onChangeText={text => setEmail(text)}
                     />
                 </AreaInput>
                 <AreaInput>
@@ -42,18 +41,14 @@ function Home(){
                     />
                 </AreaInput>
                 <SubmitBtn onPress={() => handleLogin()}>
-                    {/* {loadingAuth ? 
-                        <ActivityIndicator size={20} color='#fff'/> : 
-                        <SubmitText>Entrar</SubmitText>
-                    } */}
-                   
+                    <SubmitText>Entrar</SubmitText>
                 </SubmitBtn>
-                {/* <Link onPress={() => navigation.navigate('SignUp')}>
+                <Link onPress={() => navigation.navigate('SignUp')}>
                     <LinkText>Criar uma conta!</LinkText>
-                </Link> */}
+                </Link>
             </Container>
         </Background>
   );
 };
 
-export default Home;
+export default SignIn;
