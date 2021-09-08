@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Platform, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../../hooks/context/useAuth';
+// import { useAuth } from '../../hooks/context/useAuth';
 
 import {View, Text} from 'react-native';
 import LogoImage from '../../assets/Logo.png';
@@ -10,12 +10,12 @@ import { Background, Container, Logo, AreaInput, Input, SubmitBtn, SubmitText, L
 
 function SignIn(){
   const navigation = useNavigation();
-	const { user } = useAuth();
+	// const { user } = useAuth();
+	// console.log(user)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
 
-	console.log(user)
 
   function handleLogin() {
     // signIn(email, password);
