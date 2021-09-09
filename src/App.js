@@ -5,6 +5,8 @@ import {StatusBar} from 'react-native';
 import Routes from './routes';
 import { AuthProvider } from './hooks/context/useAuth';
 
+console.disabledYellowBox=true;
+
 export default function App() {
   return (
     <NavigationContainer>

@@ -3,24 +3,28 @@ import firebase from '../../services/firebaseConnection'
 
 export const AuthContext = createContext({})
 
-export function AuthProvider( { children }){
+export function AuthProvider({ children }){
 	const [user, setUser] = useState(null)
 
 	async function signUp(email, password, name){
-		await firebase.auth().createUserWithEmailAndPassword(email, password)
+    console.log(email, password, name)
+
+		await firebase.auth().createUserWithEmailAndPassword(email.trim(), password)
 		.then(async (value) => {
-				let uid = value.user.uid
+				let uid = value.user.uid;
+
 				await firebase.database().ref('users').child(uid).set({
 						balance: 0,
 						name: name
 				})
 				.then( () => {
-						let data = {
-								uid: uid,
-								name: name,
-								email: value.user.email,
-						}
-						setUser(data)
+          let data = {
+              uid: uid,
+              name: name,
+              email: value.user.email,
+          }
+          console.log('DATA:', data)
+          setUser(data)
 				})
 				.catch( (error) => {
 						alert(error.code)
