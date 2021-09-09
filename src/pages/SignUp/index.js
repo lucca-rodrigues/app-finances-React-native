@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Platform, ActivityIndicator } from 'react-native'
-
+import { signUp } from '../../hooks/context/useAuth'
 import {View, Text} from 'react-native';
 import LogoImage from '../../assets/Logo.png';
 
@@ -16,6 +16,7 @@ function SignUp(){
 
   function handleLogin() {
     console.log(name, email, password);
+    signUp(name, email, password);
   }
 
   return (
